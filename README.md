@@ -6,9 +6,9 @@
 
 Wikipedia serves more than 150M unique visitors per month. However under 1/10 of its editors are female, which in turn has created a biased resource.  One major reason often cited for causing women and other newcomers to be hesitant to become Wikipedia editors is the psychological barrier of not knowing where to start.  I address this issue by creating a pipeline to analyze the entire Wikipedia database with algorithms to suggest high impact, low barrier, and relevant-to-user Wikipedia pages to encourage people from diverse backgrounds to become first time editors.
 
-## Project solution
+## Solution strategy
 
-This project uses a data set containing every Wikipedia article's full text, edit history, and metadata to identify high impact, low effort edit opportunities for first time Wikipedia editors, to create a welcoming inclusive experience that will encourage people from diverse demographics and backgrounds to become Wikipedia editors.  The method for doing this is to calculate an "impact score" for every category page that describes how impactful it would be to become an editor and add an article to it.
+Develop a pipeline that creates engaging invitations for first-time Wikipedia editors by identifying  edit opportunities that are low effort, high impact, and highly relevant to the user’s interests.
 
 ## Tech stack
 ![Screen Shot 2019-06-18 at 3 55 12 PM](https://user-images.githubusercontent.com/35629096/59725158-7f3ec500-91e1-11e9-84b0-bb3546fb6afe.png)
