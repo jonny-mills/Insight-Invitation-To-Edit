@@ -1,5 +1,7 @@
 # Project Overview
 
+![Screen Shot 2019-06-18 at 3 56 27 PM](https://user-images.githubusercontent.com/35629096/59725212-af866380-91e1-11e9-8956-f4000bfcc2c6.png)
+
 Encourage people from diverse demographics and backgrounds to become Wikipedia editors by identifying low effort, high impact opportunities.
 
 ## Problem statement
