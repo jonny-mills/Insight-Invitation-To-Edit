@@ -11,7 +11,7 @@ Wikipedia is a major source of information for many people, yet it is a biased r
 This project uses a data set containing every Wikipedia article's full text, edit history, and metadata to identify high impact, low effort edit opportunities for first time Wikipedia editors, to create a welcoming inclusive experience that will encourage people from diverse demographics and backgrounds to become Wikipedia editors.  The method for doing this is to calculate an "impact score" for every category page that describes how impactful it would be to become an editor and add an article to it.
 
 ## Tech stack
-
+![Screen Shot 2019-06-18 at 3 55 12 PM](https://user-images.githubusercontent.com/35629096/59725158-7f3ec500-91e1-11e9-84b0-bb3546fb6afe.png)
 
 ### Calculating Category Impact Score
 
