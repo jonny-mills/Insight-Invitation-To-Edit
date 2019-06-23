@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Wikipedia serves more than 150M unique visitors per month. However under 1/10 of its editors are female, which in turn has created a biased resource.  One major reason often cited for causing women and other newcomers to be hesitant to become Wikipedia editors is the psychological barrier of not knowing where to start.  I address this issue by creating a pipeline to analyze the entire Wikipedia database with algorithms to suggest high impact, low barrier, and relevant-to-user Wikipedia pages to encourage people from diverse backgrounds to become first time editors.
+Wikipedia serves more than 400M unique visitors per month. However, less than 1/10 of its editors are female, which in turn has created a biased resource.  One major reason often cited for causing women and other newcomers to be hesitant to become Wikipedia editors is the psychological barrier of not knowing where to start.  I address this issue by creating a pipeline to analyze the entire Wikipedia database with algorithms to suggest high impact, low barrier, and relevant-to-user Wikipedia pages to encourage new people to become first time editors.
 
 ## Solution strategy
 
