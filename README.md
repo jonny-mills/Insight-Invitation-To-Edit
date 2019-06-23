@@ -26,15 +26,6 @@ Number of entries: you will be having more of an impact adding two articles to a
 Number of editors: if a page has only been edited by a few people, you will impact it by adding your perspective more than if you edit a page that has had hundreds of different editors already
 
 
-### Calculating Conflict Score
-
-This could be based on things like:
-Of all the entries that were ever added to the category page, how many of them were later deleted by someone else
-Many entries added and then deleted by others = high conflict
-In the editors' comment threads for the page, what is the average sentiment analysis score for the comments (more negative = high conflict)
-Conflict score is relevant for inclusion because as it said in the article about the 9 reasons women don't edit wikipedia, some people may not want to engage in "edit wars" or be criticized for their edits
-
-
 ## Visualization Output
 
 A) a dashboard where you can pick any category page and view it's "impact score" and possibly "conflict score" for editing (and all the the different components that go into the scores)
