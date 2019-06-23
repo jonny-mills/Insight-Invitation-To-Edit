@@ -1,3 +1,10 @@
+"""
+File description:
+Input: a datasource of clickstream views for a given month of all Wikipedia pages. File size for each month ~30+ million rows.
+Processing: calculating aggregate metrics for each list page in Wikipedia by grouping the category page. Agg df about 65 thousand rows
+Output: PostGres receiving the aggregate clickstream dataframe.
+"""
+
 import sys
 from pyspark import SparkContext, SparkConf
 from pyspark.sql import SparkSession
