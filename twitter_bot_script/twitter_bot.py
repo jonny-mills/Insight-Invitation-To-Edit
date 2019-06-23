@@ -11,7 +11,7 @@ os.chdir(path)
 
 from twython import Twython
 
-from auth import (
+from auth_wiki import (
     consumer_key,
     consumer_secret,
     access_token,
@@ -24,6 +24,12 @@ twitter = Twython(
     access_token_secret
 )
 
-message = "Hello world!"
-twitter.update_status(status=message)
+#a = df['list_title'].head(100)
+import random
+z = random.sample(list(a), 20)
+
+for i in z:
+    message = i
+    twitter.update_status(status=message)
+    
 print("Tweeted: {}".format(message))

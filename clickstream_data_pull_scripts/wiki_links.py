@@ -10,13 +10,14 @@ import requests
 import os
 
 master_urls = []
-url = 'https://dumps.wikimedia.org/other/clickstream/2019-04/'
-page = requests.get(url)
-root = lxml.html.fromstring(page.content)
-links_raw = root.xpath('//a/@href')
-urls = [url+i for i in links_raw if 'clickstream-enwiki' in i]
-url = urls[0]
-os.system("curl -o clickstream.gz " + url) 
-os.system("gunzip -k " + "clickstream.gz") #tell terminal to gunzip the url
-os.system('aws s3 cp clickstream_april s3://wiki-data-123456') #tell terminal to put the data to S3
-#os.system('rm clickstream')
+urls = {'March_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-03/clickstream-enwiki-2019-03.tsv.gz','Feb_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-02/clickstream-enwiki-2019-02.tsv.gz','Jan_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-01/clickstream-enwiki-2019-01.tsv.gz'}
+
+for month, url in urls.items():
+    print(url)
+    os.system("curl -o " + month + ".gz " + url) 
+    os.system("gunzip -k " + month +'.gz') #tell terminal to gunzip the file
+    #os.system("aws s3 cp " + month + " s3://wiki-data-123456") #tell terminal to put the data to S3
+    os.system('rm ' + month+'.gz')
+    os.system('rm ' + month)
+
+
