@@ -3,7 +3,8 @@
 """
 Created on Wed Jun 19 09:53:30 2019
 
-@author: isabel
+@author: Jonny
+Sending API dataframe output from pandas into PostGreSQL database. File purpose is mainly used to test the connection between two different servers.
 """
 import pandas as pd
 
