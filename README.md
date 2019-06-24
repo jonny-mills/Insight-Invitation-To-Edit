@@ -18,6 +18,9 @@ Develop a pipeline that creates engaging invitations for first-time Wikipedia ed
 
 ## Visualization Output
 
+Click link to view viz.
+https://public.tableau.com/profile/jonny.mills#!/vizhome/invitation_to_edit/InvitationtoEdit
+
 A) a dashboard where you can pick any category page and view it's "impact score" and possibly "conflict score" for editing (and all the the different components that go into the scores)
 B) A dashboard that shows the top ten category pages that are low hanging fruit for first time editors: high impact, low conflict
 
