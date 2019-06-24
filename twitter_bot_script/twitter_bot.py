@@ -7,11 +7,17 @@ Input: a dataframe containing lists pages on Wikipedia that receive overall high
 Processing: Randomizing the input list to select several lists for the Twitter bot to go and tweet about
 Output: The bot actually tweeting to twitter with new tweets.
 """
-path="/Users/isabel/Desktop/wiki_project_june1"
-import os
-os.chdir(path)
-
+#path="/Users/isabel/Desktop/wiki_project_june1"
+import pandas as pd
 from twython import Twython
+
+df = pd.read_csv('Final_Tableau_impact_wiki3.csv')
+df = df.dropna(how='any',axis=0)
+list(df)
+len(df)
+rand_df = df.sample(n=10) 
+rand_df = rand_df.reset_index(drop=True)
+
 
 from auth_wiki import (
     consumer_key,
@@ -26,12 +32,39 @@ twitter = Twython(
     access_token_secret
 )
 
-#a = df['list_title'].head(100)
-import random
-z = random.sample(list(a), 20)
 
-for i in z:
-    message = i
+for idx in range(len(rand_df)):
+    list_title = rand_df.loc[idx,'list_title_cleaned']
+    url = rand_df.loc[idx,'url']
+    badge = rand_df.loc[idx,'Badge']
+    message = ('My algorithm has detected "' + list_title + '" to be in the top %5 of all list pages in ' +badge + "! Check out the URL to edit: " + url)
+    print(message)
     twitter.update_status(status=message)
+    break
     
 print("Tweeted: {}".format(message))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

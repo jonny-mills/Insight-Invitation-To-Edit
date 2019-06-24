@@ -3,10 +3,17 @@
 """
 Created on Wed Jun 19 09:53:30 2019
 
-@author: isabel
+@author: Jonny
+
+File Description:
+-Input: A joined file of all clickstream and pageview metrics for every list page on Wikipedia, with data from January - May 2019
+Data is cleaned, messaged, and new metrics for each article are calculated. Badge awards are generated to reward top articles, and category assignments personalize a user's interests.
+-Output: A cleaned CSV with new calculated metrics, badge awards, ext, which will be passed onto tableau for visual analysis/user interface results.
+
 """
 import pandas as pd
 import operator
+import numpy as np
 from collections import Counter
 from operator import itemgetter
 pd.set_option('display.max_column',None)
@@ -21,7 +28,7 @@ dropped_col = ['placeholder','placeholder1','placeholder2','Placeholder3','Place
 [df.drop(i, axis=1, inplace=True) for i in dropped_col]
 
 print(len(df))
-blacklist_words = ['porn','sex','executed','death_row']
+blacklist_words = ['porn','sex','executed','death_row','died','erotic']
 for word in blacklist_words:
     old_len = len(df)
     df = df[~df.list_title.str.contains(word)]   
@@ -103,21 +110,75 @@ df1['trending_metric'] = df.apply(lambda x: calc_trend_metric(
              ]
         ), axis=1)
 
+
+df1 = df1.reset_index()
+
 #############################
 ####Rank percentile DF#######
 #############################
 df_rank = pd.DataFrame()
-df_rank['list_title'] = df['list_title']
-df_rank['distribution_rank_quartile'] = df1.distribution_score.rank(pct=True)
-df_rank['helpfulness_rank_quartile'] = df1.helpfulness_score.rank(pct=True)
-df_rank['total_sum_clicks_quartile'] = df1.total_sum_clicks.rank(pct=True)
-df_rank['total_sum_pageviews_quartile'] = df1.total_sum_pageviews.rank(pct=True)
-df_rank['trending_metric_quartile'] = df1.trending_metric.rank(pct=True)
-df_rank['impact_score'] = (df_rank['trending_metric_quartile'] + df_rank['total_sum_pageviews_quartile'] + df_rank['total_sum_clicks_quartile'] + df_rank['helpfulness_rank_quartile'] + df_rank['distribution_rank_quartile'])/5
+df_rank['list_title'] = df1['list_title']
+df_rank['list_title_cleaned'] = [title.replace('_',' ') for title in df_rank['list_title']]
+df_rank['url'] = df1['url']
+df_rank['distribution_rank_percentile'] = df1.distribution_score.rank(pct=True)*100
+df_rank['helpfulness_rank_percentile'] = df1.helpfulness_score.rank(pct=True)*100
+df_rank['total_sum_clicks_percentile'] = df1.total_sum_clicks.rank(pct=True)*100
+df_rank['total_sum_pageviews_percentile'] = df1.total_sum_pageviews.rank(pct=True)*100
+df_rank['trending_metric_percentile'] = df1.trending_metric.rank(pct=True)*100
+df_rank['impact_score'] = ((df_rank['trending_metric_percentile'] + df_rank['total_sum_pageviews_percentile'] + df_rank['total_sum_clicks_percentile'] + df_rank['helpfulness_rank_percentile'] + df_rank['distribution_rank_percentile'])/5)
+
+#round to nearest int
+df_rank['distribution_rank_percentile'] =df_rank['distribution_rank_percentile'].astype(int)
+df_rank['helpfulness_rank_percentile'] = df_rank['helpfulness_rank_percentile'].astype(int)
+df_rank['total_sum_clicks_percentile'] = df_rank['total_sum_clicks_percentile'].astype(int)
+df_rank['total_sum_pageviews_percentile'] = df_rank['total_sum_pageviews_percentile'].astype(int)
+df_rank['trending_metric_percentile'] = df_rank['trending_metric_percentile'].astype(int)
+df_rank['impact_score'] = df_rank['impact_score'].astype(int)
+
+df_rank = df_rank.sort_values(by=['impact_score'], ascending=False)
 
 
+df_rank.to_csv(path_or_buf = 'impact_wiki_data.csv', encoding='utf-8')
+df = df.reset_index()
+df_rank.index
+df_rank.info()
+len(df_rank)
 
-df.to_csv(path_or_buf = 'cleaned_joined_wiki_data.csv', encoding='utf-8')
+##############################
+####Badge Assignment##########
+##############################
+
+badge_dict = {
+        'distribution_rank_percentile': 'Top Clickthrough Distribution',
+        'helpfulness_rank_percentile': 'Top Helpfulness',
+        'total_sum_clicks_percentile': 'Top Clickthroughs',
+        'total_sum_pageviews_percentile': 'Top Pageviews',
+        'trending_metric_percentile': 'Top Trending'
+        }
+
+df_rank['Max'] = df_rank[['distribution_rank_percentile',
+        'helpfulness_rank_percentile',
+        'total_sum_clicks_percentile',
+        'total_sum_pageviews_percentile',
+        'trending_metric_percentile']].idxmax(axis=1)
+
+df_rank['Max_Score'] = df_rank[['distribution_rank_percentile',
+        'helpfulness_rank_percentile',
+        'total_sum_clicks_percentile',
+        'total_sum_pageviews_percentile',
+        'trending_metric_percentile']].max(axis=1)
+
+df_rank['Badge'] = np.nan
+
+df_rank.reset_index(inplace=True)
+for idx, score in enumerate(df_rank['Max_Score']):
+    if score >= 95:
+        print('f')
+        score_name = df_rank['Max'][idx]
+        df_rank.loc[idx, 'Badge'] = badge_dict[score_name]
+
+#df_rank[['helpfulness_rank_percentile','Badge']]
+
 
 
 ##############################
@@ -135,7 +196,7 @@ def top_words_counter(resultwords,num_reviews):
         return (sorted_x[0:num_reviews])
     except:
         return("Not enough words")
-top_words_counter(new_words,100)
+
 
 
 top_3000_titles = list(df_rank[['list_title','impact_score']].sort_values('impact_score',ascending = False).head(3000)['list_title'])
@@ -143,29 +204,34 @@ top_3000_titles = [i.split('_') for i in top_3000_titles]
 flat_list = [item for sublist in top_3000_titles for item in sublist]
 stopwords = ['list','of','in','the','by']
 new_words = [word for word in flat_list if word.lower() not in stopwords]
-
+top_words_counter(new_words,100)
 
 # import categories csv and create dictionary with format keyword:category
+df_categories = pd.read_csv('wikipedia_categories.csv')
 categories_dict = df_categories.set_index('keyword').to_dict()[' category']
 categories_dict
 
-
-import numpy as np
-
-import numpy as np
-df_rank["Category"] = np.nan
+df_rank["Category"] = "Other"
 df_rank["Key"] = np.nan
-df_rank['list_title']
+
+dict_key_list = list(categories_dict.keys())
+df_rank.info()
+
+df_rank.reset_index(inplace=True)
 
 for idx, title in enumerate(df_rank['list_title']):
-    for key, value in categories_dict.items():
-        try:
-            if key in title.lower():
+    #print(idx,title)
+    for key, value in categories_dict.items(): #looking thru each dict item
+            if key in title.lower().split('_'): #if key of dict in title
                 df_rank.loc[idx,"Category"] = categories_dict[key]
                 df_rank.loc[idx,"Key"] = key
                 break
-        except:
-            break
+            
+
+
+header = ['list_title','Category','Key']
+df_rank.to_csv(path_or_buf = 'impact_wiki_data1.csv', encoding='utf-8',columns=header)
+df_rank.to_csv(path_or_buf = 'impact_wiki.csv', encoding='utf-8')
 #df_rank.info()   
 #############################
 ####Test Queries ############
@@ -173,3 +239,4 @@ for idx, title in enumerate(df_rank['list_title']):
 #df[df.list_title == 'List_of_birds_of_Asia'][['may_pageviews','april_pageviews','march_pageviews']]
 df_rank[df_rank.list_title == 'List_of_flying_mythological_creatures'] 
 df_rank[['list_title','impact_score']].sort_values('impact_score',ascending = False)
+
