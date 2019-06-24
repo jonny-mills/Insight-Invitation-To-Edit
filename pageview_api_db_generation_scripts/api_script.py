@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jun  1 22:03:12 2019
+File description:
+Input: a datasource of clickstream views for a given month of all Wikipedia pages. File size for each month ~30+ million rows.
+Processing: calculating aggregate metrics for each list page in Wikipedia by grouping the category page. Agg df about 65 thousand rows
+Output: PostGres receiving the aggregate clickstream dataframe.
 
-@author: Jonny
 """
 
 import wikipedia as wiki
