@@ -10,7 +10,6 @@ Wikipedia serves more than 400M unique visitors per month. However, less than 1/
 
 Develop a pipeline that creates engaging invitations for first-time Wikipedia editors by identifying  edit opportunities that are low effort, high impact, and highly relevant to the user’s interests.
 
-## Tech stack
 ![Screen Shot 2019-06-18 at 3 55 12 PM](https://user-images.githubusercontent.com/35629096/59725158-7f3ec500-91e1-11e9-84b0-bb3546fb6afe.png)
 
 ### Calculating Category Impact Score
