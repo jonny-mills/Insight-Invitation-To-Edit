@@ -12,7 +12,7 @@ Develop a pipeline that creates engaging invitations for first-time Wikipedia ed
 
 ![Screen Shot 2019-06-18 at 3 55 12 PM](https://user-images.githubusercontent.com/35629096/59725158-7f3ec500-91e1-11e9-84b0-bb3546fb6afe.png)
 
-### Calculating Category Impact Score
+## Calculating Category Impact Score
 
 ![Screen Shot 2019-06-23 at 5 42 59 PM](https://user-images.githubusercontent.com/35629096/59984395-77669280-95de-11e9-8ece-3c9319b5b985.png)
 
