@@ -9,13 +9,10 @@ Processing: downloading, unzipping, and uploading data to S3
 Output: File containing raw data is safely uploaded to S3
 
 """
-import lxml.etree
-import lxml.html
-import requests
 import os
 
 master_urls = []
-urls = {'March_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-03/clickstream-enwiki-2019-03.tsv.gz','Feb_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-02/clickstream-enwiki-2019-02.tsv.gz','Jan_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-01/clickstream-enwiki-2019-01.tsv.gz'}
+urls = {'May_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-05/clickstream-enwiki-2019-05.tsv.gz','April_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-04/clickstream-enwiki-2019-04.tsv.gz','March_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-03/clickstream-enwiki-2019-03.tsv.gz','Feb_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-02/clickstream-enwiki-2019-02.tsv.gz','Jan_clickstream':'https://dumps.wikimedia.org/other/clickstream/2019-01/clickstream-enwiki-2019-01.tsv.gz'}
 
 for month, url in urls.items():
     print(url)
