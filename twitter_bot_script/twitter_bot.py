@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Jun  9 21:50:39 2019
-
-@author: isabel
+File description:
+Input: a dataframe containing lists pages on Wikipedia that receive overall high impact scores
+Processing: Randomizing the input list to select several lists for the Twitter bot to go and tweet about
+Output: The bot actually tweeting to twitter with new tweets.
 """
 path="/Users/isabel/Desktop/wiki_project_june1"
 import os
