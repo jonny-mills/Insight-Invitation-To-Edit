@@ -14,16 +14,7 @@ Develop a pipeline that creates engaging invitations for first-time Wikipedia ed
 
 ### Calculating Category Impact Score
 
-Monthly page views: the more people that view a category page each month, the higher the impact you will have if you add to it
-
-Click through rate (or "helpfulness"): of the people who view the category page, what percentage of them go on to click on one of the listed articles
-
-Freshness/staleness: how recently it's been updated. If you add to a category page that hasn't been editing in a while, you are having a higher impact.
-
-Number of entries: you will be having more of an impact adding two articles to a list of ten than to a list of 100
-
-Number of editors: if a page has only been edited by a few people, you will impact it by adding your perspective more than if you edit a page that has had hundreds of different editors already
-
+![Screen Shot 2019-06-23 at 5 42 59 PM](https://user-images.githubusercontent.com/35629096/59984395-77669280-95de-11e9-8ece-3c9319b5b985.png)
 
 ## Visualization Output
 
