@@ -16,25 +16,27 @@ from pyspark.sql import DataFrameWriter
 import os
 spark = SparkSession.builder.appName("TestSpark").getOrCreate()
 
+datasources = {'Jan':'s3a://wiki-data-123456/Jan_clickstream','Feb':"s3a://wiki-data-123456/Feb_clickstream",'March':"s3a://wiki-data-123456/March_clickstream",'April':"s3a://wiki-data-123456/clickstream_april",'May':"s3a://wiki-data-123456/clickstream",'April':"s3a://wiki-data-123456/clickstream_april",'May':"s3a://wiki-data-123456/clickstream"}
 
-def create_agg_clickstream_list(datasource):
-  ''' Input:   Wikipedia analytics clickstream database of all wiki pages for a given month. Data is stored in S3
-       Output:  A database that contains aggregate metrics and each List page in wikipedia, stored in a pyspark sql dataframe
-  '''
+
+grp_window = Window.partitionBy('_c0')
+magic_percentile = F.expr('percentile_approx(_c3, 0.5)')
+
+def create_df(month, datasource):
   df = spark.read.option("delimiter", "\t").csv(datasource)
   df = df.where(df._c0.contains('List_of_'))
-  agg_df= df.groupBy("_c0").agg(sum('_c3'),avg('_c3')).orderBy('sum(_c3)', ascending=False)
+  df = df.where(df._c2==('link'))
+  xx= df.groupBy("_c0").agg(sum('_c3'),magic_percentile.alias('med_val'),avg('_c3')).orderBy('sum(_c3)', ascending=False)
+  oldColumns = xx.schema.names
+  newColumns = ["list_title",month + " sum", month + " median",month+ " avg"]
+  df = reduce(lambda xx, idx: xx.withColumnRenamed(oldColumns[idx], newColumns[idx]), xrange(len(oldColumns)), xx)
+  return (df)
 
-  oldColumns = agg_df.schema.names
-  newColumns = ["List_name", "clickview_sum","clickview_avg"]
-  df = reduce(lambda agg_df, idx: agg_df.withColumnRenamed(oldColumns[idx], newColumns[idx]), xrange(len(oldColumns)), agg_df)
-  df = df.withColumn('impact_score', df.clickview_sum/df.clickview_avg)
-  df = df.orderBy(df.impact_score,ascending=False)
-  return(df)
 
-list_of_S3_files = ['s3a://wiki-data-123456/clickstream']
+mode = "overwrite"
+url = "jdbc:postgresql://10.0.0.14:5431/"
+properties = {"user":"test1","password":"test1","driver": "org.postgresql.Driver"}
 
-for file in list_of_S3_files:
-    df = create_agg_clickstream_list(file)
-    conn = sparktopostgres.PostgresConnector()
-    conn.write(df,"clickstream_impact_score","append")
+for month, datasource in datasources.items():
+  print(month,datasource)
+  df  = create_df(month, datasource)
