@@ -14,12 +14,10 @@ Wikipedia serves more than 400M unique visitors per month. However, less than 1/
 Click link to view viz.
 https://public.tableau.com/profile/jonny.mills#!/vizhome/invitation_to_edit/InvitationtoEdit
 
-A) a dashboard where you can pick any category page and view it's "impact score" and possibly "conflict score" for editing (and all the the different components that go into the scores)
-B) A dashboard that shows the top ten category pages that are low hanging fruit for first time editors: high impact, low conflict
+Dashboard description: the user can pick a category page specific to their interests by selecting one of the icons located of the top of the dashboard.  By combining metrics across over 150 million rows: including clickthrough distribution, sum of pageviews, an overall impact score is created from the list of pages. Once a user finds a page that that they find interesting, or they are knowledgable about, they can click the page and be directed to the URL on Wikipedia to go ahead and edit. Note that only list pages are included on this dashboard with the reason being that according to research, lists are a great "low hanging fruit" opportunity for people to make their first Wikipedia edit.
 
 ## Twitter Bot Output
-A daily automated email or tweet that shares three category pages each day that are low hanging fruit for first time editors to add to.
-https://twitter.com/WikiBot5
+For users who want to constantly be notified about interesting list pages that they can go an edit, a Twitter bot was created that tweets out a new recommended list page to edit every 4 hours.  Each list page that is tweeted achieved an exceptional characteristic about it, being in the top 5% of one of the five metrics that were used to calculated impact score.  Check out the twitter bot here: twitter.com/WikiBot5
 
 ## Tech Stack
 
