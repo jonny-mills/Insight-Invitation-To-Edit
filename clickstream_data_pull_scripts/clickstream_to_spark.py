@@ -32,6 +32,9 @@ def create_agg_clickstream_list(datasource):
   df = df.orderBy(df.impact_score,ascending=False)
   return(df)
 
-df = create_agg_clickstream_list('s3a://wiki-data-123456/clickstream')
-conn = sparktopostgres.PostgresConnector()
-conn.write(df,"clickstream_impact_score","append")
+list_of_S3_files = ['s3a://wiki-data-123456/clickstream']
+
+for file in list_of_S3_files:
+    df = create_agg_clickstream_list(file)
+    conn = sparktopostgres.PostgresConnector()
+    conn.write(df,"clickstream_impact_score","append")
