@@ -31,8 +31,5 @@ B) A dashboard that shows the top ten category pages that are low hanging fruit 
 
 
 ## Twitter Bot Output
-A daily automated email or tweet that shares three category pages each day that are low hanging fruit for first time editors to add to
-
-
-
-
+A daily automated email or tweet that shares three category pages each day that are low hanging fruit for first time editors to add to.
+https://twitter.com/WikiBot5
