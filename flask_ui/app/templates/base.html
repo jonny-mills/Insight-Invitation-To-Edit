@@ -1,0 +1,13 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Insight </title>
+      {% else %}
+      <title>Invitation to Edit</title>
+      {% endif %}
+    </head>
+    <body>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
