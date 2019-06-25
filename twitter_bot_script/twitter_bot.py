@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Sun Jun  9 21:50:39 2019
 File description:
@@ -15,7 +13,7 @@ df = pd.read_csv('Final_Tableau_impact_wiki3.csv')
 df = df.dropna(how='any',axis=0)
 list(df)
 len(df)
-rand_df = df.sample(n=10) 
+rand_df = df.sample(n=5)
 rand_df = rand_df.reset_index(drop=True)
 
 
@@ -32,7 +30,6 @@ twitter = Twython(
     access_token_secret
 )
 
-
 for idx in range(len(rand_df)):
     list_title = rand_df.loc[idx,'list_title_cleaned']
     url = rand_df.loc[idx,'url']
@@ -41,30 +38,5 @@ for idx in range(len(rand_df)):
     print(message)
     twitter.update_status(status=message)
     break
-    
+
 print("Tweeted: {}".format(message))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
