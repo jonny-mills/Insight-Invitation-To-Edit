@@ -1,11 +1,10 @@
 
 ![Screen Shot 2019-06-18 at 3 56 27 PM](https://user-images.githubusercontent.com/35629096/59725212-af866380-91e1-11e9-8956-f4000bfcc2c6.png)
 
-
 ## Project Overview
 
-Wikipedia serves more than 400M unique visitors per month. However, less than 1/10 of its editors are female, which in turn has created a biased resource.  One major reason often cited for causing women and other newcomers to be hesitant to become Wikipedia editors is the psychological barrier of not knowing where to start.  I address this issue by creating a pipeline to analyze the entire Wikipedia database with algorithms to suggest high impact, low barrier, and relevant-to-user Wikipedia pages to encourage new people to become first time editors.
-
+Wikipedia serves more than 400M unique visitors per month. However, less than 1/10 of its editors are female, which in turn has created a biased resource.  One major reason often cited for causing women and other newcomers to be hesitant to become Wikipedia editors is the psychological barrier of not knowing where to start.  I address this issue by creating a pipeline to analyze the entire Wikipedia database with algorithms to suggest high impact, low barrier, and relevant-to-user Wikipedia pages to encourage new people to become first time editors.  
+Click link to view slidedeck: http://bit.ly/invitation_to_edit_slidedeck
 
 ## Visualization Output
 
@@ -32,13 +31,13 @@ For users who want to constantly be notified about interesting list pages that t
 
 ![Screen Shot 2019-06-25 at 3 52 14 PM](https://user-images.githubusercontent.com/35629096/60139096-75790c80-9761-11e9-9106-806d105e2f84.png)
 
-**Tech Stack flow description**
--*Wikipedia database to S3*: Ingested 5 months of clickstream data to S3  
--*S3 to Spark*: Spark reads data from S3 (5 files containing around 30 million rows each) and perfoms aggregate data crunching  
--*Spark to PostGreSQL* Spark sends each of the 5 aggregate DF's to PostGreSQL. Next - an API script is run from the list   titles generated from the aggregate DF to generate a table containing daily pageview data for the same 5 month period  
--*PosGresSQL to TwitterBot* PostGreSQL joins different dataframes. Impact metrics calculated in Pandas. TwitterBot inputs list pages that have exceptional metrics and tweets one of the list every 4 hours  
--*PosGresSQL to Tableau* Tableau reads in the joined, postprocessed df, and a visulation is created  
--*Tableau to Flask* The created dashboard in Tableau is published. Flask takes the embedded code from Tableau to display results on www.invitationtoedit.co  
+### Tech Stack flow description
+-**Wikipedia database to S3**: Ingested 5 months of clickstream data to S3  
+-**S3 to Spark**: Spark reads data from S3 (5 files containing around 30 million rows each) and perfoms aggregate data crunching  
+-**Spark to PostGreSQL** Spark sends each of the 5 aggregate DF's to PostGreSQL. Next - an API script is run from the list   titles generated from the aggregate DF to generate a table containing daily pageview data for the same 5 month period  
+-**PosGresSQL to TwitterBot** PostGreSQL joins different dataframes. Impact metrics calculated in Pandas. TwitterBot inputs list pages that have exceptional metrics and tweets one of the list every 4 hours  
+-**PosGresSQL to Tableau** Tableau reads in the joined, postprocessed df, and a visulation is created  
+-**Tableau to Flask** The created dashboard in Tableau is published. Flask takes the embedded code from Tableau to display results on www.invitationtoedit.co  
 
 
 
