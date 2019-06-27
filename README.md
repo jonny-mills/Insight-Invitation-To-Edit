@@ -9,10 +9,11 @@ Wikipedia serves more than 400M unique visitors per month. However, less than 1/
 
 ## Visualization Output
 
-Click the link below for an interactive demo of my project results.
+Click the link for an interactive demo of my project results.
 http://www.invitationtoedit.co/
 
-Dashboard description: To further understand some of the demos: the following describes features it possestes to make it highly relevent, high impact, and low effort for the user to use.  Attached is a screenshot to make it easier to follow along with the dashboard description below.
+**Dashboard description:** The core features of my product focus on providing a Wikipedia pages that are highly relevent pages to a users interest, as well as impactful pages to edit that require low effort.
+  Attached is a screenshot to make it easier to follow along with the dashboard description below.
 
 ![Screen Shot 2019-06-25 at 3 51 43 PM](https://user-images.githubusercontent.com/35629096/60139126-96416200-9761-11e9-873e-2e558fb4fdba.png)
 
