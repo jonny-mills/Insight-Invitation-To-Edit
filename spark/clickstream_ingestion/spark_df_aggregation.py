@@ -23,6 +23,9 @@ grp_window = Window.partitionBy('_c0')
 magic_percentile = F.expr('percentile_approx(_c3, 0.5)')
 
 def create_df(month, datasource):
+'''Input: csv from S3
+   Output: aggregate df, grouped by origin clickstream source
+'''
   df = spark.read.option("delimiter", "\t").csv(datasource)
   df = df.where(df._c0.contains('List_of_'))
   df = df.where(df._c2==('link'))
@@ -35,7 +38,7 @@ def create_df(month, datasource):
 
 mode = "overwrite"
 url = "jdbc:postgresql://10.0.0.14:5431/"
-properties = {"user":"test1","password":"test1","driver": "org.postgresql.Driver"}
+properties = {"user":"******","password":"******","driver": "org.postgresql.Driver"}
 
 for month, datasource in datasources.items():
   print(month,datasource)

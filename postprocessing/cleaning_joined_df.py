@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jun 19 09:53:30 2019
-
-@author: Jonny
-
 File Description:
 -Input: A joined file of all clickstream and pageview metrics for every list page on Wikipedia, with data from January - May 2019
 Data is cleaned, messaged, and new metrics for each article are calculated. Badge awards are generated to reward top articles, and category assignments personalize a user's interests.
@@ -28,14 +24,13 @@ dropped_col = ['placeholder','placeholder1','placeholder2','Placeholder3','Place
 [df.drop(i, axis=1, inplace=True) for i in dropped_col]
 
 print(len(df))
-blacklist_words = ['porn','sex','executed','death_row','died','erotic']
+blacklist_words = [*******************]
 for word in blacklist_words:
     old_len = len(df)
     df = df[~df.list_title.str.contains(word)]   
     new_len = len(df)
     print(old_len - new_len,word)
 
-df = df[~df.list_title.str.contains('sex')]
 df = df[df['may_pageviews'] != 0]
 print(len(df))
 
@@ -225,7 +220,7 @@ for idx, title in enumerate(df_rank['list_title']):
             if key in title.lower().split('_'): #if key of dict in title
                 df_rank.loc[idx,"Category"] = categories_dict[key]
                 df_rank.loc[idx,"Key"] = key
-                break
+                break #stops the current for loop and goes onto the next title. This ensures only 1 badge can be assigned per category
             
 
 
@@ -237,6 +232,6 @@ df_rank.to_csv(path_or_buf = 'impact_wiki.csv', encoding='utf-8')
 ####Test Queries ############
 #############################
 #df[df.list_title == 'List_of_birds_of_Asia'][['may_pageviews','april_pageviews','march_pageviews']]
-df_rank[df_rank.list_title == 'List_of_flying_mythological_creatures'] 
-df_rank[['list_title','impact_score']].sort_values('impact_score',ascending = False)
+#df_rank[df_rank.list_title == 'List_of_flying_mythological_creatures'] 
+#df_rank[['list_title','impact_score']].sort_values('impact_score',ascending = False)
 

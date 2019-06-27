@@ -16,6 +16,6 @@ df['dates']=pd.to_datetime(df['dates'])
 df.index = df['dates']
 df = df.groupby(pd.Grouper(freq='M')).sum()
 df.head()
-df.transpose()
-
+df = df.transpose()
+df.to_csv('transposed_pageviews_jan_thru_may_19.csv', sep='\t', encoding='utf-8')
 

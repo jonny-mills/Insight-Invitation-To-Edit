@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Fri May 17 10:36:07 2019
-
-@author: isabel
-"""
 
 from flask import Flask
 

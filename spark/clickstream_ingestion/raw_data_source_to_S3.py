@@ -4,7 +4,7 @@
 Created on Wed Jun 12 15:47:02 2019
 File description:
 
-Input: A URL containing the full path to download a specific file, in this case Wikipedia clicksteam data
+Input: A dict with URLs containing the full path to download a specific file, in this case Wikipedia clicksteam data
 Processing: downloading, unzipping, and uploading data to S3
 Output: File containing raw data is safely uploaded to S3
 
