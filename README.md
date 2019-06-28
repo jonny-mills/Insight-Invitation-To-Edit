@@ -3,13 +3,12 @@
 
 ## Project Overview
 
-Wikipedia serves more than 400M unique visitors per month. However, less than 1/10 of its editors are female, which in turn has created a biased resource.  One major reason often cited for causing women and other newcomers to be hesitant to become Wikipedia editors is the psychological barrier of not knowing where to start.  I address this issue by creating a pipeline to analyze the entire Wikipedia database with algorithms to suggest high impact, low barrier, and relevant-to-user Wikipedia pages to encourage new people to become first time editors.  
-Click link to view slidedeck: http://bit.ly/invitation_to_edit_slidedeck
+Wikipedia serves more than 400M unique visitors per month. However, fewer than 1/10 of its editors are female, which in turn has created a biased resource.  One major reason often cited for causing women and other newcomers to be hesitant to become Wikipedia editors is the psychological barrier of not knowing where to start.  I address this issue by creating a pipeline to analyze the entire Wikipedia database with algorithms to suggest high impact, low barrier, and relevant-to-user Wikipedia pages to encourage new people to become first time editors.  
+Click [here](http://bit.ly/invitation_to_edit_slidedeck) to view slidedeck. 
 
 ## Visualization Output
 
-Click the link for an interactive demo of my project results.
-http://www.invitationtoedit.co/
+Visit [invitationtoedit.co](http://www.invitationtoedit.co/) to view an interactive demo of my project
 
 **Dashboard description:** The core features of my product focus on providing a Wikipedia pages that are highly relevent pages to a users interest, as well as impactful pages to edit that require low effort.
   Attached is a screenshot to make it easier to follow along with the dashboard description below.
