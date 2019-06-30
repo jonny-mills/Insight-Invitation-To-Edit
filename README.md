@@ -23,7 +23,7 @@ Visit [invitationtoedit.co](http://www.invitationtoedit.co/) to view an interact
 
 
 ## Twitter Bot Output
-For users who want to constantly be notified about interesting list pages that they can go an edit, a Twitter bot was created that tweets out a new recommended list page to edit every 4 hours.  Each list page that is tweeted achieved an exceptional characteristic about it, being in the top 5% of one of the five metrics that were used to calculated impact score.  Check out the twitter bot here: https:twitter.com/WikiBot5
+For users who want to constantly be notified about interesting list pages that they can go an edit, a Twitter bot was created that tweets out a new recommended list page to edit every 4 hours.  Each list page that is tweeted achieved an exceptional characteristic about it, being in the top 5% of one of the five metrics that were used to calculated impact score.  Check out the twitter bot here: [twitter.com/WikiBot5](https://twitter.com/WikiBot5)
 
 ## Tech Stack
 
@@ -31,8 +31,8 @@ For users who want to constantly be notified about interesting list pages that t
 
 ### Tech Stack flow description
 **Wikipedia database to S3**: Ingested 5 months of clickstream data to S3.  
-**S3 to Spark**: Spark reads data from S3 (5 files containing around 30 million rows each) and perfoms aggregate data crunching. Click [here](https://dumps.wikimedia.org/other/clickstream/readme.html) to view data source.
-**Spark to PostGreSQL**: Spark sends each of the 5 aggregate DF's to PostGreSQL. Next - an API script is run from the list   titles generated from the aggregate DF to generate a table containing daily pageview data for the same 5 month period. Click [here](https://github.com/Commonists/pageview-api) to learn more about the Pageview API package that I used.
+**S3 to Spark**: Spark reads data from S3 (5 files containing around 30 million rows each) and perfoms aggregate data crunching. Click [here](https://dumps.wikimedia.org/other/clickstream/readme.html) to view data source.  
+**Spark to PostGreSQL**: Spark sends each of the 5 aggregate DF's to PostGreSQL. Next - an API script is run from the list   titles generated from the aggregate DF to generate a table containing daily pageview data for the same 5 month period. Click [here](https://github.com/Commonists/pageview-api) to learn more about the Pageview API package that I used.  
 **PosGresSQL to TwitterBot**: PostGreSQL joins different dataframes. Impact metrics calculated in Pandas. TwitterBot inputs list pages that have exceptional metrics and tweets one of the list every 4 hours.  
 **PosGresSQL to Tableau**: Tableau reads in the joined, postprocessed df, and a visulation is created.  
 **Tableau to Flask**: The created dashboard in Tableau is published. Flask takes the embedded code from Tableau to display results on www.invitationtoedit.co  
