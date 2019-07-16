@@ -70,16 +70,3 @@ df.to_csv(path_or_buf = 'pageviews_jan_thru_may_19.csv', encoding='utf-8')
 
 
 
-df = pd.DataFrame()
-df['list_title'] = list_title
-df['number_of_views'] = number_of_views
-print(df)
-
-
-
-
-
-
-
-
-
