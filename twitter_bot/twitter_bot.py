@@ -31,7 +31,7 @@ for idx in range(len(rand_df)):
     list_title = rand_df.loc[idx,'list_title_cleaned']
     url = rand_df.loc[idx,'url']
     badge = rand_df.loc[idx,'Badge']
-    message = ('My algorithm has detected "' + list_title + '" to be in the top %5 of all list pages in ' +badge + "! Check out the URL to edit: " + url)
+    message = (list_title + ' is in the top 5% of Wikipedia lists this month for ' + badge + '! Contributing to this list will positively impact the Wikipedia community. Ready to start editing? ' + url)
     print(message)
     twitter.update_status(status=message)
     break #using break to only send 1 tweet, but reserving the option to tweet multiple tweets
