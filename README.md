@@ -15,11 +15,11 @@ Visit [invitationtoedit.co](http://www.invitationtoedit.co/) to view an interact
 ![Screen Shot 2019-07-15 at 8 58 55 PM](https://user-images.githubusercontent.com/35629096/61265007-6b847100-a743-11e9-9fe5-e848646ab225.png)
 
 
-**High Relevence** the user can pick a list page specific to their interests by selecting one of the icons located of the top of the dashboard. User also can click multiple icons to view the top lists of results from any customized combination of results they desire.
+**High Relevence** The user can pick a list page specific to their interests by selecting one of the icons located of the top of the dashboard. The user also can click multiple icons to view the top lists of results from any customized combination of results they desire.
 
-**High Impact** By analyzing and creating metrics from joined datasets that combined are over 150 million rows: 5 different factors are taken into account when calculating overall impact: an overall Clickthrough Score, Distribution Score, Helpfulness Score, Pageview Score, and Trending Score.  Once a user finds a page that that they find interesting, or they are knowledgable about, they can click the page and be directed to the URL on Wikipedia to go ahead and edit. If you hover over any list page's impact score, you can see see the how the 5 different impact performance metrics are contributing to the overall impact score.  On the left, a list page receives a reward badge if they are in the top 5% in one of the impact performance metrics.
+**High Impact** By analyzing and creating metrics from joined datasets that combined are over 150 million rows: five different factors are taken into account when calculating overall impact: an overall Clickthrough Score, Distribution Score, Helpfulness Score, Pageview Score, and Trending Score.  Once a user finds a page that that they find interesting, or they are knowledgable about, they can click the page and be directed to the URL on Wikipedia to go ahead and edit. If a user hovers over any list page's impact score, they can see see the how the five different impact performance metrics are contributing to the overall impact score. On the left, a list page receives a reward badge if it is in the top 5% in one of the impact performance metrics.
 
-**Low Effort** Often the most challenge step of any activity is having the courage to take the first step.  In this case, we have created a low barrier for people to become Wikipedia editors by focusing our analysis to List Pages, as lists can be easily edited by newbies who are less familiar with Wiki markup language.
+**Low Effort** Often the most challenge step of any activity is having the courage to take the first step.  In this case, I have created a low barrier for people to become Wikipedia editors by focusing my analysis to list pages, as lists can be easily edited by newbies who are less familiar with Wiki markup language.
 
 
 
@@ -32,11 +32,11 @@ For users who want to constantly be notified about interesting list pages that t
 
 ### Tech Stack flow description
 **Wikipedia database to S3**: Ingested 5 months of clickstream data to S3.  
-**S3 to Spark**: Spark reads data from S3 (5 files containing around 30 million rows each) and perfoms aggregate data crunching. Click [here](https://dumps.wikimedia.org/other/clickstream/readme.html) to view data source.  
-**Spark to PostGreSQL**: Spark sends each of the 5 aggregate DF's to PostGreSQL. Next - an API script is run from the list   titles generated from the aggregate DF to generate a table containing daily pageview data for the same 5 month period. Click [here](https://github.com/Commonists/pageview-api) to learn more about the Pageview API package that I used.  
-**PosGresSQL to TwitterBot**: PostGreSQL joins different dataframes. Impact metrics calculated in Pandas. TwitterBot inputs list pages that have exceptional metrics and tweets one of the list every 4 hours.  
-**PosGresSQL to Tableau**: Tableau reads in the joined, postprocessed df, and a visulation is created.  
-**Tableau to Flask**: The created dashboard in Tableau is published. Flask takes the embedded code from Tableau to display results on www.invitationtoedit.co  
+**S3 to Spark**: Spark reads data from S3 (5 files containing around 30 million rows each) and perfoms aggregate data crunching. Click [here](https://dumps.wikimedia.org/other/clickstream/readme.html) to view raw data source.  
+**Spark to PostGreSQL**: Spark sends each of the 5 aggregate DF's to PostGreSQL. Next - an API script is run from the list   titles generated from the aggregate DF to generate a table containing daily pageview data for the same 5 month period. Click [here](https://github.com/Commonists/pageview-api) to learn more about the Pageview API package that was used.  
+**PosGresSQL to TwitterBot**: PostGreSQL joins different dataframes. Postprocessing impact metrics calculated in Pandas. Every four hours, TwitterBot tweets list pages that have exceptional metrics.  
+**PosGresSQL to Tableau**: Tableau reads in the joined, postprocessed df to create a dashboard.
+**Tableau to Flask**: The dashboard in Tableau is published. Flask takes the embedded code from Tableau to display results on www.invitationtoedit.co  
 
 
 
