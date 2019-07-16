@@ -12,7 +12,8 @@ Visit [invitationtoedit.co](http://www.invitationtoedit.co/) to view an interact
 
 **Dashboard description:** The core features of my product focus on providing a Wikipedia pages that are highly relevent pages to a users interest, as well as impactful pages to edit that require low effort.
 
-![Screen Shot 2019-07-15 at 8 52 44 PM](https://user-images.githubusercontent.com/35629096/61264775-8f938280-a742-11e9-9715-c9d6df0a0719.png)
+![Screen Shot 2019-07-15 at 8 58 55 PM](https://user-images.githubusercontent.com/35629096/61265007-6b847100-a743-11e9-9fe5-e848646ab225.png)
+
 
 **High Relevence** the user can pick a list page specific to their interests by selecting one of the icons located of the top of the dashboard. User also can click multiple icons to view the top lists of results from any customized combination of results they desire.
 
